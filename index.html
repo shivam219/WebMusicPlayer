@@ -9,196 +9,314 @@
     <link rel="stylesheet" href="style.css">
     <link rel='icon' type='image/ico' href='img/titleBarIcon.png' />
     <style>
-        ::-webkit-scrollbar{width: 10px; } ::-webkit-scrollbar-track{background-color:rgb(75, 69, 69); border-radius: 5px;} ::-webkit-scrollbar-thumb{background: rgb(87, 87, 87); border-radius: 5px; }::-webkit-scrollbar-thumb:hover{background: white; cursor: pointer; }
-        .found{background-color: rgb(113, 218, 113);}
-        #close{background: url("img/close.png")no-repeat;  border: 0px solid white;}
-        #close:hover {background: url("img/closeHover.png") no-repeat;  outline: 1px dotted red;} 
-        #search:hover{background-color: wheat;}
-        #searchItems{height: fit-content; display: none; visibility: collapse; overflow: hidden; overflow-y: scroll; max-height: 300px;
-        }#searchItems li{
-            font-family: Verdana, Geneva, Tahoma, sans-serif;display: block;padding: 0px; 
-            margin:  5px auto auto 5px ; /*hover is done nagiation li style*/
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background-color: rgb(75, 69, 69);
+            border-radius: 5px;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: rgb(87, 87, 87);
+            border-radius: 5px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: white;
+            cursor: pointer;
+        }
+        
+        .found {
+            background-color: rgb(113, 218, 113);
+        }
+        
+        #close {
+            background: url("img/close.png");
+            background-repeat: no-repeat;
+            border: 0px solid white;
+        }
+        
+        #close:hover {
+            background: url("img/closeHover.png") no-repeat;
+            outline: 1px dotted red;
+        }
+        
+        #search:hover {
+            background-color: wheat;
+        }
+        
+        #searchItems {
+            height: fit-content;
+            display: none;
+            visibility: collapse;
+            overflow: hidden;
+            overflow-y: scroll;
+            max-height: 300px;
+        }
+        
+        #searchItems li {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            display: block;
+            padding: 0px;
+            margin: 5px auto auto 5px;
+            /*hover is done nagiation li style*/
             border: 1px dotted rgb(217, 255, 0);
-            height: max-content; width: fit-content; 
-
-          cursor:pointer
+            height: max-content;
+            width: fit-content;
+            cursor: pointer
         }
         /*---------------------bottom play icon change on hover----------------------------------*/
+        
         #left {
             /* background-image: url("img/left.png"); */
-            background-image: url("img/left.png");    
+            background-image: url("img/left.png");
             background-repeat: no-repeat;
-            height: 50px; width: 50px;
+            height: 50px;
+            width: 50px;
         }
-        #left:hover { background-image: url("img/leftHover.png"); background-repeat: no-repeat; }
-
-        #right {height: 50px; width: 50px;background-image: url("img/right.png");background-repeat: no-repeat;}
-        #right:hover { background-image: url("img/rightHover.png"); background-repeat: no-repeat; }
         
-        #play {height: 50px; width: 50px;background-image: url("img/play.png"); background-repeat: no-repeat;}
-        #play:hover  ,#cycle:hover ,#replay:hover     {  outline: 1px dashed red;  }
-
+        #left:hover {
+            background-image: url("img/leftHover.png");
+            background-repeat: no-repeat;
+        }
+        
+        #right {
+            height: 50px;
+            width: 50px;
+            background-image: url("img/right.png");
+            background-repeat: no-repeat;
+        }
+        
+        #right:hover {
+            background-image: url("img/rightHover.png");
+            background-repeat: no-repeat;
+        }
+        
+        #play {
+            height: 50px;
+            width: 50px;
+            background-image: url("img/play.png");
+            background-repeat: no-repeat;
+        }
+        
+        #play:hover,
+        #cycle:hover,
+        #replay:hover {
+            outline: 1px dashed red;
+        }
         /*---------------------End bottom play icon change on hover------------------------------*/
-
     </style>
 </head>
 
-<body style="background-color: gray;" >
+<body style="background-color: gray;">
     <!-----------------------------------------Navigation and Search--------------------------------------------------------------------------->
-        <div class="navbar" style="margin-left: -10px;  margin-top: -10px;">
-            <ul style="margin: 0px; margin-top: 10px; padding: 0px; display: -webkit-inline-box;" >
-                <li><a href="#" target="_blank"> Home</a></li>
-                <li><a href="#">singer</a></li>
-                <li><a href="about.html" target="_blank">About</a></li>
-            </ul>
-            <div style="display: inline;">
-                <img src="img/search.png" id="search" alt="search icon"   onclick="searchHide()" title="search" style=" display: -webkit-inline-box;  float: right; margin-right: 10%; margin-top: 20px;" >
-                <input type="text"  id="searchField"  placeholder="Search" onchange="searchHide()" oninput="searchHide()"  title="Enter Song" style=" display: -webkit-inline-box;  float: right; margin-right: 0%; margin-top: 20px; font-size: larger; background-color: rgb(255, 255, 255);"><br>
-            </div> <!--oninput="search()" continuesly calling when single character change  || onchange="search()" --> 
-            <!-- search item list -->
-            <div style="display: inline;" ><ul id="searchItems" style="background-color:  rgb(236, 203, 140) ; margin: 0px;  padding: 0px;  margin-left: 946px; width: 233px; margin-top: 8px;"></ul></div>
-            
-        </div><br><br><br>  
+    <div class="navbar" style="margin-left: -10px;  margin-top: -10px;">
+        <ul style="margin: 0px; margin-top: 10px; padding: 0px; display: -webkit-inline-box;">
+            <li><a href="#" target="_blank"> Home</a></li>
+            <li><a href="#">singer</a></li>
+            <li><a href="about.html" target="_blank">About</a></li>
+        </ul>
+        <div style="display: inline;">
+            <img src="img/search.png" id="search" alt="search icon" onclick="searchHide()" title="search" style=" display: -webkit-inline-box;  float: right; margin-right: 10%; margin-top: 20px;">
+            <input type="text" id="searchField" placeholder="Search" onchange="searchHide()" oninput="searchHide()" title="Enter Song" style=" display: -webkit-inline-box;  float: right; margin-right: 0%; margin-top: 20px; font-size: larger; background-color: rgb(255, 255, 255);"><br>
+        </div>
+        <!--oninput="search()" continuesly calling when single character change  || onchange="search()" -->
+        <!-- search item list -->
+        <div style="display: inline;">
+            <ul id="searchItems" style="background-color:  rgb(236, 203, 140) ; margin: 0px;  padding: 0px;  margin-left: 946px; width: 233px; margin-top: 8px;"></ul>
+        </div>
+
+    </div><br><br><br>
     <!--------------------------------------End Navigation and Search--------------------------------------------------------------------------->
-    <audio src="media/notify.mp3"   id="mySong" onpause="pausebyclient()" onplay="playbyclient()"  ontimeupdate="timeUpdate()" oncanplay="setFirst_End_Max_time()" ></audio> </audio>
+    <audio src="media/notify.mp3" id="mySong" onpause="pausebyclient()" onplay="playbyclient()" ontimeupdate="timeUpdate()" oncanplay="setFirst_End_Max_time()"></audio>
     <!-- audio tag /song source -->
-    
+
     <!--------------------------------------latest  song playlist---------------- -------------------------------------->
-    <div class="content"  >
+    <div class="content">
         <h3 style="font-size: 30px; text-align: center; font-family: Calibri;   border-radius: 25px; border: 2px solid rgb(196, 195, 195); margin:0px ; margin-top: 2px;  ">Latest Songs</h3> <br>
 
-        <ul id="playlistOfLatestSong"  class="playlist">  <!-- list generated by javaScritp in below -->/ul>
+        <ul id="playlistOfLatestSong" class="playlist">
+            <!-- list generated by javaScritp in below -->/ul>
     </div>
     <!--------------------------------------End latest  song playlist----------------------------------------------------------->
-     <!-------------------------------------Popular  song playlist---------------- -------------------------------------->
-     <div class="content" >
+    <!-------------------------------------Popular  song playlist---------------- -------------------------------------->
+    <div class="content">
         <h3 style="font-size: 30px; text-align: center; font-family: Calibri;   border-radius: 25px; border: 2px solid rgb(196, 195, 195); margin:0px ; margin-top: 2px;">Popular Songs</h3> <br>
 
-        <ul id="playlistOfPopularSong"  class="playlist">  <!-- list generated by javaScritp in below --></ul>
+        <ul id="playlistOfPopularSong" class="playlist">
+            <!-- list generated by javaScritp in below -->
+        </ul>
     </div>
     <!--------------------------------------End Popular song playlist----------------------------------------------------------->
-     <!-------------------------------------Old song playlist---------------- -------------------------------------->
-     <div class="content" >
+    <!-------------------------------------Old song playlist---------------- -------------------------------------->
+    <div class="content">
         <h3 style="font-size: 30px; text-align: center; font-family: Calibri;   border-radius: 25px; border: 2px solid rgb(196, 195, 195); margin:0px ; margin-top: 2px;">Old Songs</h3> <br>
 
-        <ul id="playlistOfOldSong"  class="playlist">  <!-- list generated by javaScritp in below --></ul>
+        <ul id="playlistOfOldSong" class="playlist">
+            <!-- list generated by javaScritp in below -->
+        </ul>
     </div>
-    <br><br><br>  <br><br> 
+    <br><br><br> <br><br>
     <!--------------------------------------End Old song playlist----------------------------------------------------------->
 
-    <!-------------------------------------display singer and song to profile-------------------------------------------------->                                                                           <!--background color       outline color               -->
-    <div id="displayProfile"  style="z-index: 100;  border: 1px solid grey; display: inline; height: 370px; width: 350px; float: right; right: 10px; position: fixed; margin-right: -9px; margin-top: -445px; display: none; background-color: rgb(53, 53, 53); outline:rgb(154, 165, 165);; border-radius: 5px;">
+    <!-------------------------------------display singer and song to profile-------------------------------------------------->
+    <!--background color       outline color               -->
+    <div id="displayProfile" style="z-index: 100;  border: 1px solid grey; display: inline; height: 370px; width: 350px; float: right; right: 10px; position: fixed; margin-right: -9px; margin-top: -445px; display: none; background-color: rgb(53, 53, 53); outline:rgb(154, 165, 165);; border-radius: 5px;">
         <div style="margin: 18% 30%; border:1px solid rgb(177, 99, 255); height: 150px; width: 150px; border-radius: 20px; ">
-            <img src="img/playlogo.png" alt="" title="profile"  id="showSongImg" style="height: 150px; width: 150px;border-radius: 20px; " >
+            <img src="img/playlogo.png" alt="" title="profile" id="showSongImg" style="height: 150px; width: 150px;border-radius: 20px; ">
         </div>
         <p id="showSinger" style="text-align: center; color: rgb(238, 238, 238);margin-top: -50px; font-size: 26px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Mansoon</p>
-        <p id="showSongName"  style="text-align: center; color: rgb(205, 191, 228);margin-top: -28px; font-size: 26px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Windows</p>
+        <p id="showSongName" style="text-align: center; color: rgb(205, 191, 228);margin-top: -28px; font-size: 26px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Windows</p>
         <!-- <img style=" margin-left: 150px; margin-top: -15px;"   id="close" title="close"  height="41px"  width="41px" > -->
-        <div style=" margin: 0px; padding: 0px; width: 40px; height: 40px; margin-top: -15px; margin-left: 150px;"   id="close" title="close"  ></div>
+        <div style=" margin: 0px; padding: 0px; width: 40px; height: 40px; margin-top: -15px; margin-left: 150px;" id="close" title="close"></div>
     </div>
-     <!---------------------------------End display singer and song to profile-------------------------------------------------->
+    <!---------------------------------End display singer and song to profile-------------------------------------------------->
     <!------------------------------------ bottom profiles player------------------------------------------------------------->
-        <div id="player"> 
-            <div id="songImg"> <img id="songImgsScr" src="img/playlogo.png" alt="sorry" onclick="showProfile()"></div>
-            <div id="songName"> <h3 id="songNameSrc"  onclick="showProfile()">Mansoon</h3> </div>
-            <div id="singer"> <h3>singer:-&nbsp;</h3> &nbsp; </div>
-            <div id="singerName"> <h3 id="singerNameScr">Windows</h3></div>
-            <div>
-                <div  id="left"  class="leftIconOnHover" style=" margin: 0px; padding: 0px; display: inline-block; margin-left:37%; margin-top:10px;" onclick="btnleft()"></div>
-                <div  id="play"   class="playIconOnHover" style="margin: 0px; padding: 0px; display: inline-block; margin-left:4%; margin-top:20px;" onclick="btnplay()"></div>
-                <div  id="right" class="rightIconOnHover" style="margin: 0px; padding: 0px; display: inline-block; margin-left:4%; margin-top:20px;" onclick="btnright()"></div>
-                <img src="img/replay.png" id="replay"  style="margin-left:6%; margin-top:20px;" onclick="btnreplay()">
-                <img src="img/cycle.png" id="cycle" style="margin-left:6%; margin-top:20px;" onclick="btncycle()">
-            </div>
-            <p style="display: inline; margin-left: 36.8%; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" id="start"> </p>  &nbsp;
-            <input type="range"  id="videoTrack"  min="0" style="width: 160px;" value="0"> &nbsp;
-            <p style="display: inline;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " id="end"  ></p>&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="range"  id="volume" oninput="changeVolume()"  min="0" max="10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <img src="img/speaker1.png" id="speaker"  style="width: 100; height: 100;">
+    <div id="player">
+        <div id="songImg"> <img id="songImgsScr" src="img/playlogo.png" alt="sorry" onclick="showProfile()"></div>
+        <div id="songName">
+            <h3 id="songNameSrc" onclick="showProfile()">Mansoon</h3>
         </div>
-        <br>  <br>  <br>  
-        <!------------------------------------ End bottom profiles player---------------------------------------------------------->
-        
-        <script src="jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="script.js" type="text/javascript"></script>
-        <!------------------------ adding song by generating at run time------------------------------------------------------------->
-        <script>
-            const singer  = { libaas:"Kaka", kahlende:"Kaka",nocompetition:"Jass Manak" , humnavamere:"humnavamere", excuses:"Gurinder Gill", pegbaliye:"Mista Baaz", daruBadnam:" Kamal Kahlon ", viah:"Jass Manak", khaab:" Akhil",
-                        highreted:"Guru Randhawa" ,temprorarypray:"Kaka" ,peaches:"justin bieber" , teejiseat:"Kaka" ,brownmunda:"three boys" , samebeef:"Sidhu Moose Wala" ,agartumsathho:"Arijit Singh" ,  namonamosankara:" Amit Trivedi", madeinindia :"Guru Randhawa",
-                        chandseparda:"Kumar sanu" , tumtothaherepadesi:"altaf raja" ,awarahawakajhonkahoon:"altaf raja",barsaatkemausam:"Kumar Sanu",terebinajindgi:"Kishore Kumar", dilbarmere:"Kishore Kumar" ,agartumhoteto:"Kishore Kumar" ,pyardiwanahotahai:"Sudesh Bhosale" ,tumdilkidhadkan:"Abhijeet Bhattacharya"
-                        };
-    
-        const song1 =           ["libaas","kahlende" ,   "nocompetition" , "humnavamere",  "excuses" , "pegbaliye" ,"daruBadnam", "viah" ,"khaab" ] ;
-        const latestSongArray = ["Libaas","Kah Len De" , "No Competition" ,"Hum Nava Mere", "Excuses","Peg Baliye" ,"DaruBadnam", "Viah"  , "Khaab"];/*use in searching to matching result*/
+        <div id="singer">
+            <h3 onclick="showProfile()">singer:-&nbsp;</h3> &nbsp; </div>
+        <div id="singerName">
+            <h3 id="singerNameScr">Windows</h3>
+        </div>
+        <div>
+            <div id="left" class="leftIconOnHover" style=" margin: 0px; padding: 0px; display: inline-block; margin-left:37%; margin-top:10px;" onclick="btnleft()"></div>
+            <div id="play" class="playIconOnHover" style="margin: 0px; padding: 0px; display: inline-block; margin-left:4%; margin-top:20px;" onclick="btnplay()"></div>
+            <div id="right" class="rightIconOnHover" style="margin: 0px; padding: 0px; display: inline-block; margin-left:4%; margin-top:20px;" onclick="btnright()"></div>
+            <img src="img/replay.png" id="replay" style="margin-left:6%; margin-top:20px;" onclick="btnreplay()">
+            <img src="img/cycle.png" id="cycle" style="margin-left:6%; margin-top:20px;" onclick="btncycle()">
+        </div>
+        <p style="display: inline; margin-left: 36.8%; margin-bottom: 20px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" id="start"> </p> &nbsp;
+        <input type="range" id="audioTrack" min="0" style="width: 160px;" value="0"> &nbsp;
+        <p style="display: inline;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " id="end"></p>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="range" id="volume" oninput="changeVolume()" min="0" max="10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="img/speaker1.png" id="speaker" style="width: 100; height: 100;">
+    </div>
+    <br> <br> <br>
+    <!------------------------------------ End bottom profiles player---------------------------------------------------------->
 
-        const song2 =            ["highreted",  "temprorarypray",  "peaches", "teejiseat",  "brownmunda" , "samebeef"  ,"agartumsathho" ,"namonamosankara"  , "madeinindia"];
-        const popularSongArray = ["High Rated", "Temprorary Pray", "Peaches", "Teeji Seat", "Brown Munda" , "Same beef", "Agar tum Sath Ho" ,"Namo Namo Sankara"  ,"Made In India"];/*use in searching to matching result*/
-        
-        const song3 =            ["chandseparda" ,  "tumtothaherepadesi",      "awarahawakajhonkahoon",      "barsaatkemausam",    "terebinajindgi" ,  "dilbarmere" ,"agartumhoteto",     "pyardiwanahotahai" ,     "tumdilkidhadkan"];/*use in searching to matching result*/
-        const oldSongArray = ["Chand se parda", "tum to thahahre pardesi", "Aawara Hawa Ka Jhonka Hoon", "barsaat Ke Mausam" , "Tere bina jindgi" ,"dilbar Mere", "Agar Tum Hote To", "Pyar Diwanana Hota Hai", "tum dil ki dhadkan" ];/*use in searching to matching result*/
+    <script src="jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="script.js" type="text/javascript"></script>
+    <!------------------------ adding song by generating at run time------------------------------------------------------------->
+    <script>
+        const singer = {
+            libaas: "Kaka",
+            kahlende: "Kaka",
+            nocompetition: "Jass Manak",
+            humnavamere: "humnavamere",
+            excuses: "Gurinder Gill",
+            pegbaliye: "Mista Baaz",
+            daruBadnam: " Kamal Kahlon ",
+            viah: "Jass Manak",
+            khaab: " Akhil",
+            highreted: "Guru Randhawa",
+            temprorarypray: "Kaka",
+            peaches: "justin bieber",
+            teejiseat: "Kaka",
+            brownmunda: "three boys",
+            samebeef: "Sidhu Moose Wala",
+            agartumsathho: "Arijit Singh",
+            namonamosankara: " Amit Trivedi",
+            madeinindia: "Guru Randhawa",
+            chandseparda: "Kumar sanu",
+            tumtothaherepadesi: "altaf raja",
+            awarahawakajhonkahoon: "altaf raja",
+            barsaatkemausam: "Kumar Sanu",
+            terebinajindgi: "Kishore Kumar",
+            dilbarmere: "Kishore Kumar",
+            agartumhoteto: "Kishore Kumar",
+            pyardiwanahotahai: "Sudesh Bhosale",
+            tumdilkidhadkan: "Abhijeet Bhattacharya"
+        };
+
+        const song1 = ["libaas", "kahlende", "nocompetition", "humnavamere", "excuses", "pegbaliye", "daruBadnam", "viah", "khaab"];
+        const latestSongArray = ["Libaas", "Kah Len De", "No Competition", "Hum Nava Mere", "Excuses", "Peg Baliye", "DaruBadnam", "Viah", "Khaab"]; /*use in searching to matching result*/
+
+        const song2 = ["highreted", "temprorarypray", "peaches", "teejiseat", "brownmunda", "samebeef", "agartumsathho", "namonamosankara", "madeinindia"];
+        const popularSongArray = ["High Rated", "Temprorary Pray", "Peaches", "Teeji Seat", "Brown Munda", "Same beef", "Agar tum Sath Ho", "Namo Namo Sankara", "Made In India"]; /*use in searching to matching result*/
+
+        const song3 = ["chandseparda", "tumtothaherepadesi", "awarahawakajhonkahoon", "barsaatkemausam", "terebinajindgi", "dilbarmere", "agartumhoteto", "pyardiwanahotahai", "tumdilkidhadkan"]; /*use in searching to matching result*/
+        const oldSongArray = ["Chand se parda", "tum to thahahre pardesi", "Aawara Hawa Ka Jhonka Hoon", "barsaat Ke Mausam", "Tere bina jindgi", "dilbar Mere", "Agar Tum Hote To", "Pyar Diwanana Hota Hai", "tum dil ki dhadkan"]; /*use in searching to matching result*/
         fillData();
-        function fillData(){
-          let  latestSongText = "",popularSongText = "",oldSongText = ""; 
-            for (let i = 0; i < song1.length; i++) { 
-                                            //song no   ----------Song Source-------    ----------Song imgage------------   ---------Singer-------  ----song Name-----     ----song labe---------
-                latestSongText +=  "<li onclick='profile(" + i + " , \"media/"+ song1[i]+ ".mp3\""+   ",\"\songimg/" + song1[i]+".jpg\""+  ", singer."+song1[i] + ", \""+latestSongArray[i] +"\"," + true  +", 1 "  +")'>" + latestSongArray[i] + "</li>";
-                popularSongText += "<li onclick='profile(" + i +" , \"media/"+ song2[i]+ ".mp3\""+   ",\"\songimg/" + song2[i]+".jpg\""+  ", singer."+song2[i] + ", \""+popularSongArray[i] +"\"," + true  +", 2 "  +")'>" + popularSongArray[i] + "</li>";
-                oldSongText +=     "<li onclick='profile(" + i +" , \"media/"+ song3[i]+ ".mp3\""+   ",\"\songimg/" + song3[i]+".jpg\""+  ", singer."+song3[i] + ", \""+oldSongArray[i] +"\"," + true  +", 3 "  +")'>" + oldSongArray[i] + "</li>";
+
+        function fillData() {
+            let latestSongText = "",
+                popularSongText = "",
+                oldSongText = "";
+            for (let i = 0; i < song1.length; i++) {
+                //song no   ----------Song Source-------    ----------Song imgage------------   ---------Singer-------  ----song Name-----     ----song labe---------
+                latestSongText += "<li onclick='profile(" + i + " , \"media/" + song1[i] + ".mp3\"" + ",\"\songimg/" + song1[i] + ".jpg\"" + ", singer." + song1[i] + ", \"" + latestSongArray[i] + "\"," + true + ", 1 " + ")'>" + latestSongArray[i] + "</li>";
+                popularSongText += "<li onclick='profile(" + i + " , \"media/" + song2[i] + ".mp3\"" + ",\"\songimg/" + song2[i] + ".jpg\"" + ", singer." + song2[i] + ", \"" + popularSongArray[i] + "\"," + true + ", 2 " + ")'>" + popularSongArray[i] + "</li>";
+                oldSongText += "<li onclick='profile(" + i + " , \"media/" + song3[i] + ".mp3\"" + ",\"\songimg/" + song3[i] + ".jpg\"" + ", singer." + song3[i] + ", \"" + oldSongArray[i] + "\"," + true + ", 3 " + ")'>" + oldSongArray[i] + "</li>";
             }
             document.getElementById("playlistOfLatestSong").innerHTML = latestSongText;
             document.getElementById("playlistOfPopularSong").innerHTML = popularSongText;
             document.getElementById("playlistOfOldSong").innerHTML = oldSongText;
         }
-        
-        function searchHide(){
-        let searchSong = document.getElementById("searchField").value;  
-            let searchItems = document.getElementById("searchItems"); searchItems.style.visibility="visible";
-            if(searchSong!=""){ searchSong= searchSong.replace(/\s+/g ,' ');/*removing whitespace by s content all space then + mean more then one */
-                     $("#searchItems").fadeIn("fast");  
-                let songItem=""; 
-                for(let i = 0; i<song1.length; i++){ 
-                    let curSong= latestSongArray[i].toLowerCase(); 
-                    if(curSong.includes(searchSong.toLowerCase())){/*gerenete li and in searching atual song name will proper but searchin list have not proper due to label us are valiable*/
-                      colorTxtGET =  colorString(curSong,searchSong.toLowerCase());/*color same text to green by span by sending to method*/
-                        songItem += "<li onclick='profile(" + i +" , \"media/"+ song1[i]+ ".mp3\""+   ",\"\songimg/" + song1[i]+".jpg\""+  ", singer."+song1[i] + ", \""+latestSongArray[i] +"\" ," + false + ", -1 "+" )'>" + colorTxtGET + "</li>";
-                    }  
-                    /*assinging popular value and checking againg in O(n) time*/   
-                    curSong= popularSongArray[i].toLowerCase(); 
-                    if(curSong.includes(searchSong.toLowerCase())){
-                      colorTxtGET =  colorString(curSong,searchSong.toLowerCase());/*color same text to green by span by sending to method*/
-                        songItem += "<li onclick='profile(" + i +" , \"media/"+ song2[i]+ ".mp3\""+   ",\"\songimg/" + song2[i]+".jpg\""+  ", singer."+song2[i] + ", \""+popularSongArray[i] +"\" ," + false + ", -1 "+" )'>" + colorTxtGET + "</li>";
-                    }  
-                    curSong= oldSongArray[i].toLowerCase(); 
-                    if(curSong.includes(searchSong.toLowerCase())){/*curSong change and set song */
-                      colorTxtGET =  colorString(curSong,searchSong.toLowerCase());/*color same text to green by span by sending to method*/
-                        songItem += "<li onclick='profile(" + i +" , \"media/"+ song3[i]+ ".mp3\""+   ",\"\songimg/" + song3[i]+".jpg\""+  ", singer."+song3[i] + ", \""+oldSongArray[i] +"\" ," + false + ", -1 "+" )'>" + colorTxtGET + "</li>";
-                    }  
-                    if(songItem !=""){  document.getElementById("searchItems").innerHTML=songItem;}
-                    /*runtime checking if user search all song*/                    
+
+        function searchHide() {
+            let searchSong = document.getElementById("searchField").value;
+            let searchItems = document.getElementById("searchItems");
+            searchItems.style.visibility = "visible";
+            if (searchSong != "") {
+                searchSong = searchSong.replace(/\s+/g, ' '); /*removing whitespace by s content all space then + mean more then one */
+                $("#searchItems").fadeIn("fast");
+                let songItem = "";
+                for (let i = 0; i < song1.length; i++) {
+                    let curSong = latestSongArray[i].toLowerCase();
+                    if (curSong.includes(searchSong.toLowerCase())) { /*gerenete li and in searching atual song name will proper but searchin list have not proper due to label us are valiable*/
+                        colorTxtGET = colorString(curSong, searchSong.toLowerCase()); /*color same text to green by span by sending to method*/
+                        songItem += "<li onclick='profile(" + i + " , \"media/" + song1[i] + ".mp3\"" + ",\"\songimg/" + song1[i] + ".jpg\"" + ", singer." + song1[i] + ", \"" + latestSongArray[i] + "\" ," + false + ", -1 " + " )'>" + colorTxtGET + "</li>";
+                    }
+                    /*assinging popular value and checking againg in O(n) time*/
+                    curSong = popularSongArray[i].toLowerCase();
+                    if (curSong.includes(searchSong.toLowerCase())) {
+                        colorTxtGET = colorString(curSong, searchSong.toLowerCase()); /*color same text to green by span by sending to method*/
+                        songItem += "<li onclick='profile(" + i + " , \"media/" + song2[i] + ".mp3\"" + ",\"\songimg/" + song2[i] + ".jpg\"" + ", singer." + song2[i] + ", \"" + popularSongArray[i] + "\" ," + false + ", -1 " + " )'>" + colorTxtGET + "</li>";
+                    }
+                    curSong = oldSongArray[i].toLowerCase();
+                    if (curSong.includes(searchSong.toLowerCase())) { /*curSong change and set song */
+                        colorTxtGET = colorString(curSong, searchSong.toLowerCase()); /*color same text to green by span by sending to method*/
+                        songItem += "<li onclick='profile(" + i + " , \"media/" + song3[i] + ".mp3\"" + ",\"\songimg/" + song3[i] + ".jpg\"" + ", singer." + song3[i] + ", \"" + oldSongArray[i] + "\" ," + false + ", -1 " + " )'>" + colorTxtGET + "</li>";
+                    }
+                    if (songItem != "") {
+                        document.getElementById("searchItems").innerHTML = songItem;
+                    }
+                    /*runtime checking if user search all song*/
                 }
-                if(songItem ==""){
-                    document.getElementById("searchItems").innerHTML="&nbsp;&nbsp;Sorry Not Founded will <br> &nbsp;&nbsp;add soon"; 
-                    document.getElementById("searchItems").style.fontFamily="Verdana";document.getElementById("searchItems").style.fontStyle="bold";
+                if (songItem == "") {
+                    document.getElementById("searchItems").innerHTML = "&nbsp;&nbsp;Sorry Not Founded will <br> &nbsp;&nbsp;add soon";
+                    document.getElementById("searchItems").style.fontFamily = "Verdana";
+                    document.getElementById("searchItems").style.fontStyle = "bold";
                 }
-            }   
-            else { $("#searchItems").fadeOut("fast"); }/*hide search field is not visible*/
-        }/*search hide function end --- */
-        function colorString(songNameTxt, colorTxt){  /*changing same text with span and id= found */
-            let  colorTxtReturn= songNameTxt.replace(colorTxt, "<span class='found'>" + colorTxt +"</span>" );
-            return   colorTxtReturn ;
+            } else {
+                $("#searchItems").fadeOut("fast");
+            } /*hide search field is not visible*/
+        } /*search hide function end --- */
+        function colorString(songNameTxt, colorTxt) { /*changing same text with span and id= found */
+            let colorTxtReturn = songNameTxt.replace(colorTxt, "<span class='found'>" + colorTxt + "</span>");
+            return colorTxtReturn;
         }
-       
-        </script>
+    </script>
     <!---------------------------------End adding song-------------------------------------------------->
     <!---------------------------------display singer and song to profile-------------------------------------------------->
     <script>
-        $("#close").click(function (){ $("#displayProfile").hide()});
-      function showProfile() {
-        $("#displayProfile").fadeToggle("fast");
-      }
-    </script>  
-    <!---------------------------------End display singer and song to profile-------------------------------------------------->    
+        $("#close").click(function() {
+            $("#displayProfile").hide()
+        });
+
+        function showProfile() {
+            $("#displayProfile").fadeToggle("fast");
+        }
+    </script>
+    <!---------------------------------End display singer and song to profile-------------------------------------------------->
 </body>
+
 </html>
 
 <!-- 
